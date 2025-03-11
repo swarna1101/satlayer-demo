@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SatLayer Demo</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+<div class="app-wrapper">
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <i class="fas fa-layer-group"></i>
+                <h1>SatLayer</h1>
+            </div>
+            <div class="devnet-badge">
+                <span class="status-indicator"></span>
+                <span>sat-bbn-testnet1</span>
+            </div>
+        </div>
+        <nav class="sidebar-nav">
+            <ul>
+                <li class="active">
+                    <a href="#services-panel"><i class="fas fa-server"></i> Services</a>
+                </li>
+                <li>
+                    <a href="#contracts-panel"><i class="fas fa-file-contract"></i> Contracts</a>
+                </li>
+                <li>
+                    <a href="#integration-panel"><i class="fas fa-link"></i> Bitcoin Integration</a>
+                </li>
+                <li>
+                    <a href="#register-panel"><i class="fas fa-plus-circle"></i> Register Service</a>
+                </li>
+            </ul>
+        </nav>
+        <div class="sidebar-footer">
+            <a href="#" id="network-info-button">
+                <i class="fas fa-info-circle"></i> Network Info
+            </a>
+            <a href="https://docs.satlayer.xyz" target="_blank">
+                <i class="fas fa-book"></i> Docs
+            </a>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <header class="main-header">
+            <h1>Dashboard</h1>
+            <div class="header-actions">
+                <span class="chain-status">Chain Height: 15243</span>
+                <button class="action-button small">
+                    <i class="fas fa-sync"></i> Refresh Data
+                </button>
+            </div>
+        </header>
+
+        <!-- Status Cards -->
+        <div class="status-cards">
+            <div class="status-card">
+                <div class="status-icon">
+                    <i class="fas fa-server"></i>
+                </div>
+                <div class="status-content">
+                    <h3>Registered Services</h3>
+                    <p class="status-value">3</p>
+                </div>
+            </div>
+
+            <div class="status-card">
+                <div class="status-icon btc-icon">
+                    <i class="fab fa-bitcoin"></i>
+                </div>
+                <div class="status-content">
+                    <h3>BTC Checkpoint</h3>
+                    <p class="status-value">Block #842301</p>
+                </div>
+            </div>
+
+            <div class="status-card">
+                <div class="status-icon providers-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <div class="status-content">
+                    <h3>Finality Providers</h3>
+                    <p class="status-value">3 active</p>
+                </div>
+            </div>
+
+            <div class="status-card">
+                <div class="status-icon sync-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <div class="status-content">
+                    <h3>Last Sync</h3>
+                    <p class="status-value">5 minutes ago</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Panels -->
+        <section id="services-panel" class="panel">
+            <div class="panel-header">
+                <h2><i class="fas fa-server"></i> Registered Services</h2>
+                <button id="refresh-services" class="action-button small">
+                    <i class="fas fa-sync"></i> Refresh
+                </button>
+            </div>
+            <div class="panel-content">
+                <div class="services-list">
+                    <div class="service-item">
+                        <div class="service-icon">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <div class="service-details">
+                            <h3>Bitcoin-backed Storage</h3>
+                            <div class="service-meta">
+                                <span class="service-id">Service ID: 1</span>
+                                <span class="service-status active">Active</span>
+                            </div>
+                        </div>
+                        <div class="service-actions">
+                            <button class="icon-button" title="View Details">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="service-item">
+                        <div class="service-icon">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <div class="service-details">
+                            <h3>Secure Messaging</h3>
+                            <div class="service-meta">
+                                <span class="service-id">Service ID: 2</span>
+                                <span class="service-status active">Active</span>
+                            </div>
+                        </div>
+                        <div class="service-actions">
+                            <button class="icon-button" title="View Details">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="service-item">
+                        <div class="service-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="service-details">
+                            <h3>Prediction Market</h3>
+                            <div class="service-meta">
+                                <span class="service-id">Service ID: 3</span>
+                                <span class="service-status active">Active</span>
+                            </div>
+                        </div>
+                        <div class="service-actions">
+                            <button class="icon-button" title="View Details">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contracts-panel" class="panel">
+            <div class="panel-header">
+                <h2><i class="fas fa-file-contract"></i> Interact with Contracts</h2>
+            </div>
+            <div class="panel-content">
+                <div class="contract-selection">
+                    <div class="select-wrapper">
+                        <select id="contract-selector">
+                            <option value="bvsdirectory">BVSDirectory</option>
+                            <option value="statebank">StateBank</option>
+                            <option value="bvsdriver">BVSDriver</option>
+                            <option value="strategymanager">StrategyManager</option>
+                        </select>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <button id="fetch-contract" class="action-button">
+                        <i class="fas fa-terminal"></i> Fetch Contract Info
+                    </button>
+                </div>
+
+                <div id="contract-info" class="contract-info">
+                    <div class="loading-indicator hidden">
+                        <div class="spinner"></div>
+                        <p>Fetching contract information...</p>
+                    </div>
+                    <div class="contract-details">
+                        <h3>BVSDirectory</h3>
+                        <div class="info-row">
+                            <span class="info-label">Address</span>
+                            <div class="address-container">
+                                <code>bbn1f803xuwl6l7e8jm9ld0kynvvjfhfs5trax8hmrn4wtnztglpzw0sm72xua</code>
+                                <button class="copy-button" title="Copy address">
+                                    <i class="fas fa-copy"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Functionality</span>
+                            <span class="info-value">Lists registered services</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Registered Services</span>
+                            <span class="info-value">3</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="integration-panel" class="panel">
+            <div class="panel-header">
+                <h2><i class="fas fa-link"></i> Babylon Chain Integration</h2>
+            </div>
+            <div class="panel-content">
+                <p class="panel-description">
+                    SatLayer leverages Babylon Genesis to power shared security with Bitcoin.
+                </p>
+
+                <div class="integration-stats">
+                    <div class="integration-stat-item">
+                        <h4>Bitcoin Checkpoint</h4>
+                        <div class="stat-value">Block #842301</div>
+                    </div>
+
+                    <div class="integration-stat-item">
+                        <h4>Finality Providers</h4>
+                        <div class="stat-value">3 active</div>
+                    </div>
+
+                    <div class="integration-stat-item">
+                        <h4>Last Sync</h4>
+                        <div class="stat-value">5 minutes ago</div>
+                    </div>
+
+                    <div class="integration-stat-item">
+                        <h4>Chain Status</h4>
+                        <div class="stat-value">
+                            <span class="status-badge success">Healthy</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="register-panel" class="panel">
+            <div class="panel-header">
+                <h2><i class="fas fa-plus-circle"></i> Register New Service</h2>
+            </div>
+            <div class="panel-content">
+                <form id="register-service-form">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="service-name">Service Name</label>
+                            <input type="text" id="service-name" placeholder="Enter service name">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="service-address">Service Address</label>
+                            <input type="text" id="service-address" placeholder="bbn1...">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="service-type">Service Type</label>
+                            <div class="select-wrapper">
+                                <select id="service-type">
+                                    <option value="storage">Storage</option>
+                                    <option value="messaging">Messaging</option>
+                                    <option value="prediction">Prediction Market</option>
+                                    <option value="other">Other</option>
+                                </select>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="service-description">Description (Optional)</label>
+                            <input type="text" id="service-description" placeholder="Brief service description">
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="action-button primary">
+                            <i class="fas fa-plus-circle"></i> Register Service
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+</div>
+
+<!-- Network Info Modal -->
+<div id="network-modal" class="modal hidden">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>SatLayer Devnet Info</h2>
+            <button class="close-modal">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="network-info">
+                <div class="info-item">
+                    <div class="info-label">Chain ID</div>
+                    <div class="info-value">sat-bbn-testnet1</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Babylon Version</div>
+                    <div class="info-value">v0.0.1</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">RPC</div>
+                    <div class="info-value code">https://rpc.sat-bbn-testnet1.satlayer.net</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">gRPC</div>
+                    <div class="info-value code">https://grpc.sat-bbn-testnet1.satlayer.net</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">REST</div>
+                    <div class="info-value code">https://lcd1.sat-bbn-testnet1.satlayer.net</div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="https://docs.satlayer.xyz" target="_blank" class="link-button">
+                <i class="fas fa-book"></i> Documentation
+            </a>
+            <a href="https://github.com/babylonchain/babylon" target="_blank" class="link-button">
+                <i class="fab fa-github"></i> GitHub
+            </a>
+        </div>
+    </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
